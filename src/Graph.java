@@ -19,10 +19,8 @@ public class Graph {
 
     public void addEdge(int v1, int v2) {
         adjList.get(v1).add(v2);
-        adjList.get(v2).add(v1);
 
         adjMatrix[v1][v2] = 1;
-        adjMatrix[v2][v1] = 1;
     }
 
     public void listToMatrix() {
@@ -31,6 +29,18 @@ public class Graph {
 
             for (int vertex : adjList.get(i)) {
                 adjMatrix[i][vertex] = 1;
+            }
+        }
+    }
+
+    public void matrixToList() {
+        for (int i = 0; i < numVertices; i++) {
+            adjList.get(i).clear();
+
+            for (int j = 0; j < numVertices; j++) {
+                if (adjMatrix[i][j] == 1) {
+                    adjList.get(i).add(j);
+                }
             }
         }
     }
