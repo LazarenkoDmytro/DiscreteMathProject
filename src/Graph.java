@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Graph {
@@ -22,5 +23,15 @@ public class Graph {
 
         adjMatrix[v1][v2] = 1;
         adjMatrix[v2][v1] = 1;
+    }
+
+    public void listToMatrix() {
+        for (int i = 0; i < numVertices; i++) {
+            Arrays.fill(adjMatrix[i], 0);
+
+            for (int vertex : adjList.get(i)) {
+                adjMatrix[i][vertex] = 1;
+            }
+        }
     }
 }
