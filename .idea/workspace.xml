@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ef4b063-7275-41ef-acd0-95c5055bccc6" name="Changes" comment="Added the listToMatrix() method inside Graph class">
+    <list default="true" id="6ef4b063-7275-41ef-acd0-95c5055bccc6" name="Changes" comment="Fully implemented the Graph structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,18 +30,23 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "LazarenkoDmytro"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;LazarenkoDmytro&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/LazarenkoDmytro/DiscreteMathProject",
-    "accountId": "9a50753a-0709-42af-b522-5e5241d4f6e6"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/LazarenkoDmytro/DiscreteMathProject&quot;,
+    &quot;accountId&quot;: &quot;9a50753a-0709-42af-b522-5e5241d4f6e6&quot;
   }
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2fBCMpOYlcwP6yCjyCLnVh6E5gm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -48,6 +54,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Graph.executor": "Run",
+    "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "graph",
     "kotlin-language-version-configured": "true",
@@ -60,6 +68,15 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Graph" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="DiscreteMathProject" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -76,7 +93,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1713176802892</updated>
-      <workItem from="1713176803888" duration="3390000" />
+      <workItem from="1713176803888" duration="5815000" />
+      <workItem from="1713265039795" duration="2364000" />
+      <workItem from="1713267417389" duration="1195000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -110,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713180001228</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added the matrixToList() method inside Graph class. Edited the class to be a directed graph">
+      <option name="closed" value="true" />
+      <created>1713180440076</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713180440076</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,6 +148,19 @@
     <MESSAGE value="Created the Graph class with the basic fields and constructor" />
     <MESSAGE value="Added the addEdge() method inside Graph class" />
     <MESSAGE value="Added the listToMatrix() method inside Graph class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the listToMatrix() method inside Graph class" />
+    <MESSAGE value="Added the matrixToList() method inside Graph class. Edited the class to be a directed graph" />
+    <MESSAGE value="Fully implemented the Graph structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fully implemented the Graph structure" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
