@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -10,6 +11,11 @@ public class Main {
                 {1, 0, 1, 0}};
         Graph adjacencyMatrixGraph = new Graph(adjacencyMatrix);
         System.out.print(adjacencyMatrixGraph);
+
+        DFS adjacencyMatrixGraphDFS = new DFS(adjacencyMatrixGraph);
+        System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(adjacencyMatrixGraphDFS.getReachabilityMatrixUsingAdjacencyLists()));
+        System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(adjacencyMatrixGraphDFS.getReachabilityMatrixUsingAdjacencyMatrix()));
+        System.out.println();
 
         List<List<Integer>> adjacencyLists = new ArrayList<>();
         adjacencyLists.add(new ArrayList<>());
@@ -31,7 +37,17 @@ public class Main {
         Graph adjacencyListsGraph = new Graph(adjacencyLists);
         System.out.print(adjacencyListsGraph);
 
-        Graph randomGraph = Graph.generateRandomGraph(10, 0.6);
+        DFS adjacencyListsGraphDFS = new DFS(adjacencyListsGraph);
+        System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(adjacencyListsGraphDFS.getReachabilityMatrixUsingAdjacencyLists()));
+        System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(adjacencyListsGraphDFS.getReachabilityMatrixUsingAdjacencyMatrix()));
+        System.out.println();
+
+        Graph randomGraph = Graph.generateRandomGraph(10, 0.2);
         System.out.print(randomGraph);
+
+        DFS randomGraphDFS = new DFS(randomGraph);
+        System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(randomGraphDFS.getReachabilityMatrixUsingAdjacencyLists()));
+        System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(randomGraphDFS.getReachabilityMatrixUsingAdjacencyMatrix()));
+        System.out.println();
     }
 }
