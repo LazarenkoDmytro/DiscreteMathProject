@@ -26,5 +26,12 @@ public class BFS {
         }
     }
 
+    public int[][] getReachabilityMatrixUsingAdjacencyLists() {
+        int[][] reachabilityMatrix = new int[graph.getVerticesNumber()][graph.getVerticesNumber()];
+        for (int i = 0; i < graph.getVerticesNumber(); i++) {
+            bfsUsingAdjacencyLists(i, reachabilityMatrix);
+        }
 
+        return reachabilityMatrix;
+    }
 }
