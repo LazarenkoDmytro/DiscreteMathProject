@@ -2,13 +2,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BFS {
-    private final Graph graph;
-
-    public BFS(Graph graph) {
-        this.graph = graph;
-    }
-
-    private void bfsUsingAdjacencyLists(int start, int[][] reachabilityMatrix) {
+    private static void bfsUsingAdjacencyLists(Graph graph, int start, int[][] reachabilityMatrix) {
         boolean[] visited = new boolean[graph.getVerticesNumber()];
         Queue<Integer> queue = new LinkedList<>();
         visited[start] = true;
@@ -26,16 +20,16 @@ public class BFS {
         }
     }
 
-    public int[][] getReachabilityMatrixUsingAdjacencyLists() {
+    public static int[][] getReachabilityMatrixUsingAdjacencyLists(Graph graph) {
         int[][] reachabilityMatrix = new int[graph.getVerticesNumber()][graph.getVerticesNumber()];
         for (int i = 0; i < graph.getVerticesNumber(); i++) {
-            bfsUsingAdjacencyLists(i, reachabilityMatrix);
+            bfsUsingAdjacencyLists(graph, i, reachabilityMatrix);
         }
 
         return reachabilityMatrix;
     }
 
-    private void bfsUsingAdjacencyMatrix(int start, int[][] reachabilityMatrix) {
+    private static void bfsUsingAdjacencyMatrix(Graph graph, int start, int[][] reachabilityMatrix) {
         boolean[] visited = new boolean[graph.getVerticesNumber()];
         Queue<Integer> queue = new LinkedList<>();
         visited[start] = true;
@@ -53,10 +47,10 @@ public class BFS {
         }
     }
 
-    public int[][] getReachabilityMatrixUsingAdjacencyMatrix() {
+    public static int[][] getReachabilityMatrixUsingAdjacencyMatrix(Graph graph) {
         int[][] reachabilityMatrix = new int[graph.getVerticesNumber()][graph.getVerticesNumber()];
         for (int i = 0; i < graph.getVerticesNumber(); i++) {
-            bfsUsingAdjacencyMatrix(i, reachabilityMatrix);
+            bfsUsingAdjacencyMatrix(graph, i, reachabilityMatrix);
         }
 
         return reachabilityMatrix;

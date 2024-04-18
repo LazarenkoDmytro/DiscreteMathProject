@@ -1,68 +1,77 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
-        int[][] adjacencyMatrix = {
-                {0, 1, 1, 0},
-                {1, 0, 0, 0},
-                {0, 1, 0, 1},
-                {1, 0, 1, 0}};
-        Graph adjacencyMatrixGraph = new Graph(adjacencyMatrix);
-        System.out.print(adjacencyMatrixGraph);
+        int[] verticesNumbers = {40, 80, 120, 160, 200};
+        double[] densities = {0.1, 0.3, 0.5, 0.7, 0.9};
 
-        DFS adjacencyMatrixGraphDFS = new DFS(adjacencyMatrixGraph);
-        System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(adjacencyMatrixGraphDFS.getReachabilityMatrixUsingAdjacencyLists()));
-        System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(adjacencyMatrixGraphDFS.getReachabilityMatrixUsingAdjacencyMatrix()));
-        System.out.println();
+        int graphsNumber = 20;
 
-        BFS adjacencyMatrixGraphBFS = new BFS(adjacencyMatrixGraph);
-        System.out.println("Reachability matrix using BFS: " + Arrays.deepToString(adjacencyMatrixGraphBFS.getReachabilityMatrixUsingAdjacencyLists()));
-        System.out.println("Reachability matrix using BFS: " + Arrays.deepToString(adjacencyMatrixGraphBFS.getReachabilityMatrixUsingAdjacencyMatrix()));
-        System.out.println();
+        for (int verticesNumber : verticesNumbers) {
+            for (double density : densities) {
+                Graph[] graphs = generateGraphs(verticesNumber, density, graphsNumber);
 
-        List<List<Integer>> adjacencyLists = new ArrayList<>();
-        adjacencyLists.add(new ArrayList<>());
-        adjacencyLists.add(new ArrayList<>());
-        adjacencyLists.add(new ArrayList<>());
-        adjacencyLists.add(new ArrayList<>());
+                System.out.println("Graph with " + verticesNumber + " vertices, " + density + " density");
+                System.out.println("DFS adjacency lists time: " + getTimeSpentDFSAdjacencyLists(graphs) + " ms");
+                System.out.println("DFS adjacency matrix time: " + getTimeSpentDFSAdjacencyMatrix(graphs) + " ms");
+                System.out.println("BFS adjacency lists time: " + getTimeSpentBFSAdjacencyLists(graphs) + " ms");
+                System.out.println("BFS adjacency matrix time: " + getTimeSpentBFSAdjacencyMatrix(graphs) + " ms\n");
+            }
+        }
+    }
 
-        adjacencyLists.getFirst().add(1);
-        adjacencyLists.getFirst().add(2);
+    private static Graph[] generateGraphs(int vertices, double density, int graphsNumber) {
+        Graph[] graphs = new Graph[graphsNumber];
+        for (int i = 0; i < graphsNumber; i++) {
+            graphs[i] = Graph.generateRandomGraph(vertices, density);
+        }
 
-        adjacencyLists.get(1).add(0);
+        return graphs;
+    }
 
-        adjacencyLists.get(2).add(1);
-        adjacencyLists.get(2).add(3);
+    private static double getTimeSpentDFSAdjacencyLists(Graph[] graphs) {
+        double startTime = System.currentTimeMillis();
 
-        adjacencyLists.get(3).add(0);
-        adjacencyLists.get(3).add(2);
+        for (Graph graph : graphs) {
+            DFS.getReachabilityMatrixUsingAdjacencyLists(graph);
+        }
 
-        Graph adjacencyListsGraph = new Graph(adjacencyLists);
-        System.out.print(adjacencyListsGraph);
+        double finishTime = System.currentTimeMillis();
 
-        DFS adjacencyListsGraphDFS = new DFS(adjacencyListsGraph);
-        System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(adjacencyListsGraphDFS.getReachabilityMatrixUsingAdjacencyLists()));
-        System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(adjacencyListsGraphDFS.getReachabilityMatrixUsingAdjacencyMatrix()));
-        System.out.println();
+        return (finishTime - startTime) / graphs.length;
+    }
 
-        BFS adjacencyListsGraphBFS = new BFS(adjacencyListsGraph);
-        System.out.println("Reachability matrix using BFS: " + Arrays.deepToString(adjacencyListsGraphBFS.getReachabilityMatrixUsingAdjacencyLists()));
-        System.out.println("Reachability matrix using BFS: " + Arrays.deepToString(adjacencyListsGraphBFS.getReachabilityMatrixUsingAdjacencyMatrix()));
-        System.out.println();
+    private static double getTimeSpentDFSAdjacencyMatrix(Graph[] graphs) {
+        double startTime = System.currentTimeMillis();
 
-        Graph randomGraph = Graph.generateRandomGraph(10, 0.2);
-        System.out.print(randomGraph);
+        for (Graph graph : graphs) {
+            DFS.getReachabilityMatrixUsingAdjacencyMatrix(graph);
+        }
 
-        DFS randomGraphDFS = new DFS(randomGraph);
-        System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(randomGraphDFS.getReachabilityMatrixUsingAdjacencyLists()));
-        System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(randomGraphDFS.getReachabilityMatrixUsingAdjacencyMatrix()));
-        System.out.println();
+        double finishTime = System.currentTimeMillis();
 
-        BFS randomGraphBFS = new BFS(randomGraph);
-        System.out.println("Reachability matrix using BFS: " + Arrays.deepToString(randomGraphBFS.getReachabilityMatrixUsingAdjacencyLists()));
-        System.out.println("Reachability matrix using BFS: " + Arrays.deepToString(randomGraphBFS.getReachabilityMatrixUsingAdjacencyMatrix()));
-        System.out.println();
+        return (finishTime - startTime) / graphs.length;
+    }
+
+    private static double getTimeSpentBFSAdjacencyLists(Graph[] graphs) {
+        double startTime = System.currentTimeMillis();
+
+        for (Graph graph : graphs) {
+            BFS.getReachabilityMatrixUsingAdjacencyLists(graph);
+        }
+
+        double finishTime = System.currentTimeMillis();
+
+        return (finishTime - startTime) / graphs.length;
+    }
+
+    private static double getTimeSpentBFSAdjacencyMatrix(Graph[] graphs) {
+        double startTime = System.currentTimeMillis();
+
+        for (Graph graph : graphs) {
+            BFS.getReachabilityMatrixUsingAdjacencyMatrix(graph);
+        }
+
+        double finishTime = System.currentTimeMillis();
+
+        return (finishTime - startTime) / graphs.length;
     }
 }
