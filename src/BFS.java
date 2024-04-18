@@ -44,12 +44,21 @@ public class BFS {
         while (!queue.isEmpty()) {
             int vertex = queue.poll();
             reachabilityMatrix[start][vertex] = 1;
-            for (int j = 0; j < graph.getVerticesNumber(); j++) {
-                if (graph.getAdjacencyMatrix()[vertex][j] == 1 && !visited[j]) {
-                    visited[j] = true;
-                    queue.add(j);
+            for (int i = 0; i < graph.getVerticesNumber(); i++) {
+                if (graph.getAdjacencyMatrix()[vertex][i] == 1 && !visited[i]) {
+                    visited[i] = true;
+                    queue.add(i);
                 }
             }
         }
+    }
+
+    public int[][] getReachabilityMatrixUsingAdjacencyMatrix() {
+        int[][] reachabilityMatrix = new int[graph.getVerticesNumber()][graph.getVerticesNumber()];
+        for (int i = 0; i < graph.getVerticesNumber(); i++) {
+            bfsUsingAdjacencyMatrix(i, reachabilityMatrix);
+        }
+
+        return reachabilityMatrix;
     }
 }
