@@ -17,6 +17,11 @@ public class Main {
         System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(adjacencyMatrixGraphDFS.getReachabilityMatrixUsingAdjacencyMatrix()));
         System.out.println();
 
+        BFS adjacencyMatrixGraphBFS = new BFS(adjacencyMatrixGraph);
+        System.out.println("Reachability matrix using BFS: " + Arrays.deepToString(adjacencyMatrixGraphBFS.getReachabilityMatrixUsingAdjacencyLists()));
+        System.out.println("Reachability matrix using BFS: " + Arrays.deepToString(adjacencyMatrixGraphBFS.getReachabilityMatrixUsingAdjacencyMatrix()));
+        System.out.println();
+
         List<List<Integer>> adjacencyLists = new ArrayList<>();
         adjacencyLists.add(new ArrayList<>());
         adjacencyLists.add(new ArrayList<>());
@@ -42,12 +47,22 @@ public class Main {
         System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(adjacencyListsGraphDFS.getReachabilityMatrixUsingAdjacencyMatrix()));
         System.out.println();
 
+        BFS adjacencyListsGraphBFS = new BFS(adjacencyListsGraph);
+        System.out.println("Reachability matrix using BFS: " + Arrays.deepToString(adjacencyListsGraphBFS.getReachabilityMatrixUsingAdjacencyLists()));
+        System.out.println("Reachability matrix using BFS: " + Arrays.deepToString(adjacencyListsGraphBFS.getReachabilityMatrixUsingAdjacencyMatrix()));
+        System.out.println();
+
         Graph randomGraph = Graph.generateRandomGraph(10, 0.2);
         System.out.print(randomGraph);
 
         DFS randomGraphDFS = new DFS(randomGraph);
         System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(randomGraphDFS.getReachabilityMatrixUsingAdjacencyLists()));
         System.out.println("Reachability matrix using DFS: " + Arrays.deepToString(randomGraphDFS.getReachabilityMatrixUsingAdjacencyMatrix()));
+        System.out.println();
+
+        BFS randomGraphBFS = new BFS(randomGraph);
+        System.out.println("Reachability matrix using BFS: " + Arrays.deepToString(randomGraphBFS.getReachabilityMatrixUsingAdjacencyLists()));
+        System.out.println("Reachability matrix using BFS: " + Arrays.deepToString(randomGraphBFS.getReachabilityMatrixUsingAdjacencyMatrix()));
         System.out.println();
     }
 }
