@@ -24,4 +24,14 @@ public class DFS {
 
         return reachabilityMatrix;
     }
+
+    private void dfsUsingAdjacencyMatrix(int start, int vertex, boolean[] visited, int[][] reachabilityMatrix) {
+        visited[vertex] = true;
+        reachabilityMatrix[start][vertex] = 1;
+        for (int i = 0; i < graph.getVerticesNumber(); i++) {
+            if (graph.getAdjacencyMatrix()[vertex][i] == 1 && !visited[i]) {
+                dfsUsingAdjacencyMatrix(start, i, visited, reachabilityMatrix);
+            }
+        }
+    }
 }
