@@ -34,4 +34,14 @@ public class DFS {
             }
         }
     }
+
+    public int[][] getReachabilityMatrixUsingAdjacencyMatrix() {
+        int[][] reachabilityMatrix = new int[graph.getVerticesNumber()][graph.getVerticesNumber()];
+        for (int i = 0; i < graph.getVerticesNumber(); i++) {
+            boolean[] visited = new boolean[graph.getVerticesNumber()];
+            dfsUsingAdjacencyMatrix(i, i, visited, reachabilityMatrix);
+        }
+
+        return reachabilityMatrix;
+    }
 }
