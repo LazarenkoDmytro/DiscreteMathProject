@@ -45,6 +45,18 @@ public class Graph {
         this.adjacencyMatrix = adjacencyMatrix;
     }
 
+    public int getVerticesNumber() {
+        return verticesNumber;
+    }
+
+    public List<List<Integer>> getAdjacencyLists() {
+        return adjacencyLists;
+    }
+
+    public int[][] getAdjacencyMatrix() {
+        return adjacencyMatrix;
+    }
+
     public void addEdge(int vertex1, int vertex2) {
         adjacencyLists.get(vertex1).add(vertex2);
 
