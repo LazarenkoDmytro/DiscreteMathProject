@@ -34,4 +34,22 @@ public class BFS {
 
         return reachabilityMatrix;
     }
+
+    private void bfsUsingAdjacencyMatrix(int start, int[][] reachabilityMatrix) {
+        boolean[] visited = new boolean[graph.getVerticesNumber()];
+        Queue<Integer> queue = new LinkedList<>();
+        visited[start] = true;
+        queue.add(start);
+
+        while (!queue.isEmpty()) {
+            int vertex = queue.poll();
+            reachabilityMatrix[start][vertex] = 1;
+            for (int j = 0; j < graph.getVerticesNumber(); j++) {
+                if (graph.getAdjacencyMatrix()[vertex][j] == 1 && !visited[j]) {
+                    visited[j] = true;
+                    queue.add(j);
+                }
+            }
+        }
+    }
 }
