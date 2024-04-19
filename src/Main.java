@@ -1,3 +1,8 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Main class to test graph processing algorithms including DFS and BFS.
  */
@@ -5,19 +10,44 @@ public class Main {
     public static void main(String[] args) {
         int[] verticesNumbers = {40, 80, 120, 160, 200};
         double[] densities = {0.1, 0.3, 0.5, 0.7, 0.9};
-        int graphsNumber = 20;
+        int graphsNumber = 100;
+        List<String> results = new ArrayList<>();
+
+        // Header for TSV
+        results.add("Vertices\tDensity\tDFS Adj List Time (ms)\tDFS Adj Matrix Time (ms)\tBFS Adj List Time (ms)\tBFS Adj Matrix Time (ms)");
 
         // Iterates through different configurations of graphs and measures algorithm performance
         for (int verticesNumber : verticesNumbers) {
             for (double density : densities) {
                 Graph[] graphs = generateGraphs(verticesNumber, density, graphsNumber);
 
-                System.out.println("Graph with " + verticesNumber + " vertices, " + density + " density");
-                System.out.println("DFS adjacency lists time: " + getTimeSpentDFSAdjacencyLists(graphs) + " ms");
-                System.out.println("DFS adjacency matrix time: " + getTimeSpentDFSAdjacencyMatrix(graphs) + " ms");
-                System.out.println("BFS adjacency lists time: " + getTimeSpentBFSAdjacencyLists(graphs) + " ms");
-                System.out.println("BFS adjacency matrix time: " + getTimeSpentBFSAdjacencyMatrix(graphs) + " ms\n");
+                double dfsAdjListTime = getTimeSpentDFSAdjacencyLists(graphs);
+                double dfsAdjMatrixTime = getTimeSpentDFSAdjacencyMatrix(graphs);
+                double bfsAdjListTime = getTimeSpentBFSAdjacencyLists(graphs);
+                double bfsAdjMatrixTime = getTimeSpentBFSAdjacencyMatrix(graphs);
+
+                // Storing results in a list
+                results.add(verticesNumber + "\t" + density + "\t" + dfsAdjListTime + "\t" + dfsAdjMatrixTime + "\t" + bfsAdjListTime + "\t" + bfsAdjMatrixTime);
             }
+        }
+
+        // Write results to a TSV file
+        writeResultsToTSV("experiment_results.tsv", results);
+    }
+
+    /**
+     * Writes the collected experiment results to a TSV (Tab-Separated Values) file.
+     *
+     * @param fileName  The name of the file to which the results will be written.
+     * @param dataLines A list of strings, each representing a line of data to be written to the file.
+     */
+    private static void writeResultsToTSV(String fileName, List<String> dataLines) {
+        try (FileWriter writer = new FileWriter(fileName)) {
+            for (String line : dataLines) {
+                writer.write(line + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
