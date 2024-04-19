@@ -1,10 +1,18 @@
 import java.util.*;
 
+/**
+ * Represents an oriented graph using both adjacency lists and matrix representations.
+ */
 public class Graph {
     private final int verticesNumber;
     private final List<List<Integer>> adjacencyLists;
     private final int[][] adjacencyMatrix;
 
+    /**
+     * Constructs a new Graph using the number of vertices, initializing both representations.
+     *
+     * @param verticesNumber the number of vertices in the graph
+     */
     public Graph(int verticesNumber) {
         this.verticesNumber = verticesNumber;
 
@@ -16,6 +24,11 @@ public class Graph {
         this.adjacencyMatrix = new int[verticesNumber][verticesNumber];
     }
 
+    /**
+     * Constructs a Graph from a list of adjacency lists.
+     *
+     * @param adjacencyLists initial adjacency lists
+     */
     public Graph(List<List<Integer>> adjacencyLists) {
         this.verticesNumber = adjacencyLists.size();
 
@@ -29,6 +42,11 @@ public class Graph {
         }
     }
 
+    /**
+     * Constructs a Graph from an adjacency matrix.
+     *
+     * @param adjacencyMatrix initial adjacency matrix
+     */
     public Graph(int[][] adjacencyMatrix) {
         this.verticesNumber = adjacencyMatrix.length;
 
@@ -45,6 +63,7 @@ public class Graph {
         this.adjacencyMatrix = adjacencyMatrix;
     }
 
+    // Getter methods provide read-only access to the graph's properties
     public int getVerticesNumber() {
         return verticesNumber;
     }
@@ -57,12 +76,25 @@ public class Graph {
         return adjacencyMatrix;
     }
 
+    /**
+     * Adds an edge between two vertices in both list and matrix representations.
+     *
+     * @param vertex1 the start vertex
+     * @param vertex2 the end vertex
+     */
     public void addEdge(int vertex1, int vertex2) {
         adjacencyLists.get(vertex1).add(vertex2);
 
         adjacencyMatrix[vertex1][vertex2] = 1;
     }
 
+    /**
+     * Generates a random graph with specified vertex count and density of edges.
+     *
+     * @param verticesNumber number of vertices in the graph
+     * @param density        the probability of an edge between any two vertices
+     * @return a randomly generated graph
+     */
     public static Graph generateRandomGraph(int verticesNumber, double density) {
         Graph graph = new Graph(verticesNumber);
         int maxEdgesNumber = verticesNumber * (verticesNumber - 1);
@@ -83,6 +115,11 @@ public class Graph {
         return graph;
     }
 
+    /**
+     * Provides a string representation of the graph showing both list and matrix forms.
+     *
+     * @return formatted string of the graph's adjacency list and matrix
+     */
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
